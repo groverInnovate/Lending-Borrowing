@@ -12,15 +12,15 @@ contract Deploy is Script {
     function run() external {
         vm.startBroadcast();
 
-        // Deploy the mock ERC20 token
+       
         token = new ERC20Mock("Test Token", "TST", 1_000_000 ether);
 
-        // Deploy the Lending Protocol contract
+        
         lending = new LendingProtocol(msg.sender);
 
-        // ✅ Use the setter functions
-        lending.setBorrowRate(address(token), 10);   // 10% borrow rate
-        lending.setSupplyRate(address(token), 5);    // 5% supply rate
+        
+        lending.setBorrowRate(address(token), 10);   
+        lending.setSupplyRate(address(token), 5);   
 
         console.log("Deployed LendingProtocol at:", address(lending));
         console.log("Deployed TestToken at:", address(token));
